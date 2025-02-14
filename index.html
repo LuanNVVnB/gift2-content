@@ -227,16 +227,18 @@
         }
       }
 
-      /* Footer */
-      footer {
-        position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 1rem;
-        text-align: center;
-        color: rgb(24, 23, 23);
-      }
+      @media (max-width: 768px) {
+    h1 {
+        font-size: 2rem; /* Giảm kích thước tiêu đề */
+    }
+    p {
+        font-size: 1.2rem; /* Giảm kích thước đoạn văn */
+    }
+    .background {
+        max-height: 50vh; /* Giảm chiều cao trên mobile */
+    }
+}
+
     </style>
   </head>
   <body>
@@ -280,8 +282,6 @@
     </p> -->
     <p id="valentine-text"></p>
 
-    <!-- Footer -->
-    <footer>Made with ❤️ by LNVV</footer>
 
     <!-- JavaScript -->
     <script>
@@ -292,7 +292,7 @@
     };
 
         const titleItem = "Happy Valentine's Day 2025";
-        const text = `Em à, valentine này anh cũng muốn gửi đến em lời xin lỗi vì thời gian qua đã làm em thêm nhiều buồn phiền và thất vọng, mong em bỏ qua 
+        const text = `Em à, valentine này anh cũng muốn gửi đến em lời xin lỗi vì thời gian qua đã làm em thêm nhiều buồn phiền và thất vọng, mong em bỏ qua
         và quên đi những ưu phiền đó nhé, anh sẽ cố gắng hơn để trở thành một người tốt hơn
         để em không phải buồn phiền nhiều nữa. Thương em! ❤️`;
 
