@@ -1,177 +1,404 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hộp Quà 3D Valentine</title>
+    <title>Happy Valentine's Day 2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      /* Reset */
-      * {
+      /* CSS Styling */
+      body {
         margin: 0;
         padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: #f9d7e6; /* Màu hồng pastel */
-        font-family: Arial, sans-serif;
+        font-family: "Arial", sans-serif;
+        color: rgb(235, 10, 10);
         overflow: hidden;
+        height: 100vh;
       }
 
-      .gift-container {
-        position: relative;
-        width: 200px;
-        height: 250px;
-        perspective: 1000px;
-        cursor: pointer;
-      }
+      /* Background */
+      .background {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+    border: 5px solid white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1;
 
-      .box {
-        width: 100%;
-        height: 100%;
-        position: relative;
-        transform-style: preserve-3d;
-        transition: transform 1s ease-in-out;
-      }
+    /* Ẩn ban đầu */
+    visibility: hidden;
+    transform: translate(-50%, -50%) scale(0.8);
 
-      .lid {
-        position: absolute;
-        top: -40px;
-        left: 0;
-        width: 100%;
-        height: 60px;
-        background-color: #ff4081; /* Hồng đậm */
-        border-radius: 20px 20px 0 0;
-        transform-origin: bottom;
-        transition: transform 0.5s ease-in-out;
-      }
+    /* Kích hoạt animation sau 30s */
+    animation: showBackground 0s linear forwards;
+    animation-delay: 25s;
+}
 
-      .box-body {
-        width: 100%;
-        height: 180px;
-        background-color: #ff80ab; /* Hồng nhạt */
-        border-radius: 0 0 15px 15px;
-        position: relative;
-      }
-
-      .ribbon-vertical {
+@keyframes showBackground {
+    from {
+        visibility: hidden;
+    }
+    to {
+        visibility: visible;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+      .image-strip {
         position: absolute;
         top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 10px;
-        height: 100%;
-        background-color: #ff1744; /* Đỏ đậm */
-      }
-
-      .ribbon-horizontal {
-        position: absolute;
-        top: 50%;
         left: 0;
         width: 100%;
-        height: 10px;
-        background-color: #ff1744; /* Đỏ đậm */
-        transform: translateY(-50%);
+        height: 100%;
+        display: flex;
+        animation: scroll-left 20s linear infinite; /* Hiệu ứng cuộn từ phải sang trái */
       }
 
-      .bow {
+      .image-strip img {
+        width: 400px; /* Mỗi hình ảnh có chiều rộng bằng carousel */
+        height: 450px; /* Mỗi hình ảnh có chiều cao bằng carousel */
+        object-fit: cover; /* Đảm bảo hình ảnh không bị méo */
+        flex-shrink: 0; /* Ngăn hình ảnh co lại */
+      }
+
+      /* Animation cho từng dải */
+      .image-strip-1 {
+        animation-delay: 0s; /* Không delay */
+      }
+      .image-strip-2 {
+        animation-delay: 5s; /* Delay 5 giây */
+      }
+      .image-strip-3 {
+        animation-delay: 10s; /* Delay 10 giây */
+      }
+      .image-strip-4 {
+        animation-delay: 15s; /* Delay 15 giây */
+      }
+
+      @keyframes scroll-left {
+        0% {
+          transform: translateX(0); /* Bắt đầu từ vị trí ban đầu */
+        }
+        100% {
+          transform: translateX(
+            -100%
+          ); /* Cuộn hết chiều dài của dải hình ảnh */
+        }
+      }
+      .background::before {
+        content: "";
         position: absolute;
-        top: -20px;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.5),
+          rgba(0, 0, 0, 0),
+          rgba(0, 0, 0, 0.5)
+        );
+        z-index: 1;
+      }
+
+      /* Hiệu ứng sương mù */
+      .fog {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        animation: fog-move 15s linear infinite;
+      }
+
+      @keyframes fog-move {
+        0% {
+          transform: translateX(-50%);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+
+      /* Nội dung chính */
+      h1 {
+        position: absolute;
+        top: 5%;
         left: 50%;
         transform: translateX(-50%);
-        width: 40px;
-        height: 40px;
-        background-color: #ff1744; /* Đỏ đậm */
+        font-size: 4.55rem;
+        text-align: center;
+        animation: fadeIn 2s ease-in-out;
+        font-family: "Dancing Script", serif;
+        z-index: 1000;
+      }
+
+      p {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 2rem;
+        text-align: center;
+        animation: fadeIn 4s ease-in-out;
+        text-transform: capitalize;
+        font-family: "Dancing Script", serif;
+        z-index: 1000;
+      }
+
+      .letter {
+            opacity: 0;
+            animation: fadeIn 0.05s forwards;
+        }
+
+      @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+
+
+      #backgroundMusic,iframe {
+        width: 0;
+        height: 0;
+        border: none;
+        visibility: hidden;
+      }
+
+
+      /* Trái tim bay */
+      .heart {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        top: 40%;
+        z-index: 1000;
+        background-color: red;
+        transform: rotate(-45deg);
+        animation: float 5s infinite ease-in-out;
+      }
+
+      .heart::before,
+      .heart::after {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background-color: red;
         border-radius: 50%;
       }
 
-      .bow::before,
-      .bow::after {
-        content: "";
-        position: absolute;
-        width: 20px;
-        height: 40px;
-        background-color: #ff1744; /* Đỏ đậm */
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) rotate(45deg);
-        border-radius: 5px;
+      .heart::before {
+        top: 0;
+        left: 15px;
       }
 
-      .bow::after {
-        transform: translate(-50%, -50%) rotate(-45deg);
+      .heart::after {
+        left: 0;
+        top: -15px;
       }
 
-      .card {
+      @keyframes float {
+        0% {
+          transform: translateY(0) rotate(-45deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-600px) rotate(-45deg);
+          opacity: 0;
+        }
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      /* Footer */
+      footer {
         position: absolute;
-        top: 50%;
+        bottom: 20px;
         left: 50%;
-        transform: translate(-50%, 150%) scale(0);
-        width: 300px;
-        height: 200px;
-        background-color: #fff;
-        border: 2px solid #ff4081;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transform: translateX(-50%);
+        font-size: 1rem;
         text-align: center;
-        padding: 20px;
-        font-size: 1.2rem;
-        color: #ff1744;
-        z-index: 10;
-        transition: transform 1s ease-in-out 0.5s;
-      }
-
-      .card h1 {
-        font-size: 2rem;
-        margin-bottom: 10px;
-      }
-
-      .open .lid {
-        transform: rotateX(90deg);
-      }
-
-      .open .card {
-        transform: translate(-50%, -50%) scale(1);
+        color: rgb(24, 23, 23);
       }
     </style>
   </head>
   <body>
-    <div class="gift-container" id="giftContainer">
-      <div class="box">
-        <div class="lid"></div>
-        <div class="box-body">
-          <div class="ribbon-vertical"></div>
-          <div class="ribbon-horizontal"></div>
-        </div>
-        <div class="bow"></div>
+    <audio id="backgroundMusic"  autoplay>
+      <source src="keyboard.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+  </audio>
+  <iframe id="youtubeVideo" width="1" height="1"
+    src="https://www.youtube.com/embed/js6JBdLzNn4?autoplay=1&mute=0&loop=1"
+    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+</iframe>
+
+
+
+    <!-- Hình nền -->
+    <div class="background">
+      <div class="image-strip image-strip-1">
+        <!-- Các hình ảnh sẽ được thêm bằng JavaScript -->
       </div>
-      <div class="card" id="card">
-        <h1>Chúc Mừng Valentine 14-2!</h1>
-        <p>
-          Chúc tình yêu của anh một ngày valentine tràn ngập yêu thương, hạnh
-          phúc và mãi là embee của anh nhé!
-        </p>
+      <div class="image-strip image-strip-2">
+        <!-- Các hình ảnh sẽ được thêm bằng JavaScript -->
+      </div>
+      <div class="image-strip image-strip-3">
+        <!-- Các hình ảnh sẽ được thêm bằng JavaScript -->
+      </div>
+      <div class="image-strip image-strip-4">
+        <!-- Các hình ảnh sẽ được thêm bằng JavaScript -->
       </div>
     </div>
+    </div>
+    <div class="fog"></div>
 
+    <!-- Nội dung chính -->
+    <h1 id="title-happy"></h1>
+    <!-- <p>
+      "Em à, Đà Lạt mùa này thật đẹp<br/>
+      nhưng không đẹp bằng nụ cười của em<br />
+      Anh muốn cùng em đi qua mọi con đường<br/>
+       ngắm nhìn những đồi thông và hoàng hôn rực rỡ<br />
+      Yêu em nhiều hơn cả những vì sao trên bầu trời Đà Lạt! ❤️"
+    </p> -->
+    <p id="valentine-text"></p>
+
+    <!-- Footer -->
+    <footer>Made with ❤️ by LNVV</footer>
+
+    <!-- JavaScript -->
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const giftContainer = document.getElementById("giftContainer");
+       window.onload = function() {
+        setTimeout(function() {
+            document.getElementById("backgroundMusic").play();
+        }, 10000); // 10 giây
+    };
 
-        giftContainer.addEventListener("click", () => {
-          // Thêm class để mở hộp quà
-          giftContainer.classList.add("open");
+        const titleItem = "Happy Valentine's Day 2025";
+        const text = `Em à, valentine này anh cũng muốn gửi đến em lời xin lỗi vì thời gian qua đã làm em thêm nhiều buồn phiền và thất vọng, mong em bỏ qua 
+        và quên đi những ưu phiền đó nhé, anh sẽ cố gắng hơn để trở thành một người tốt hơn
+        để em không phải buồn phiền nhiều nữa. Thương em! ❤️`;
 
-          // Chuyển hướng sau 5 giây
-          setTimeout(() => {
-            window.location.href = "https://luannvvnb.github.io/gift2-content/"; // Thay bằng URL bạn muốn chuyển hướng
-          }, 3000);
+        const title = document.getElementById("title-happy");
+        const container = document.getElementById("valentine-text");
+
+        function showTitle() {
+            return new Promise((resolve) => {
+                let titleIndex = 0;
+
+                function addTitleLetter() {
+                    if (titleIndex < titleItem.length) {
+                        let span = document.createElement("span");
+                        span.textContent = titleItem[titleIndex];
+                        span.style.animationDelay = `${titleIndex * 50}ms`;
+                        title.appendChild(span);
+                        titleIndex++;
+                        setTimeout(addTitleLetter, 70);
+                    } else {
+                        resolve(); // Gọi resolve khi title hoàn thành
+                    }
+                }
+
+                addTitleLetter();
+            });
+        }
+
+        function showLetter() {
+            let index = 0;
+
+            function addTextLetter() {
+                if (index < text.length) {
+                    if (text[index] === "\n") {
+                        container.appendChild(document.createElement("br"));
+                    } else {
+                        const span = document.createElement("span");
+                        span.textContent = text[index];
+                        span.classList.add("letter");
+                        span.style.animationDelay = `${index * 30}ms`;
+                        container.appendChild(span);
+                    }
+                    index++;
+                    setTimeout(addTextLetter, 50);
+                }
+            }
+
+            addTextLetter();
+        }
+
+        // Chạy showTitle trước, khi xong mới chạy showLetter
+        showTitle().then(() => {
+            setTimeout(showLetter, 1000); // Chờ 1 giây sau khi title hoàn tất mới chạy text
         });
-      });
+
+      // Danh sách hình ảnh
+      const backgroundImages = [
+        "./img1.jpg",
+        "./img2.jpg",
+        "./img3.jpg",
+        "./img4.jpg",
+        "./img5.jpg",
+        "./img6.jpg",
+        "./img7.jpg",
+        "./img8.jpg",
+        "./img9.jpg",
+        "./img10.jpg",
+      ];
+
+      // Lấy tất cả các dải hình ảnh
+      const imageStrips = document.querySelectorAll(".image-strip");
+
+      // Hàm thêm hình ảnh vào dải
+      function addImagesToStrip(strip) {
+        // Tạo hai bản sao của danh sách hình ảnh để tạo hiệu ứng lặp vô hạn
+        const images = [...backgroundImages, ...backgroundImages];
+        // Thêm các hình ảnh vào dải
+        images.forEach((image) => {
+          const imgElement = document.createElement("img");
+          imgElement.src = image;
+          strip.appendChild(imgElement);
+        });
+      }
+
+      // Khởi tạo tất cả các dải hình ảnh
+      imageStrips.forEach((strip) => addImagesToStrip(strip));
+
+      // Hàm tạo trái tim
+      function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+
+        // Vị trí ngẫu nhiên trên màn hình
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+
+        // Thêm trái tim vào body
+        document.body.appendChild(heart);
+
+        // Xóa trái tim sau khi kết thúc animation
+        setTimeout(() => {
+          heart.remove();
+        }, 5000);
+      }
+
+      // Tạo trái tim liên tục
+      setInterval(createHeart, 300);
     </script>
   </body>
 </html>
