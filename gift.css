@@ -1,0 +1,114 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f9e7f7;
+  font-family: Arial, sans-serif;
+}
+
+/* Container */
+.container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+}
+
+/* Gift Box */
+.gift-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 1s ease-in-out;
+}
+
+/* Lid (Nắp hộp) */
+.lid {
+  position: absolute;
+  top: -50px;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #ff4d6a;
+  border-radius: 10px 10px 0 0;
+  transform-origin: bottom;
+  transform: rotateX(0deg);
+  transition: transform 1s ease-in-out;
+}
+
+/* Box (Thân hộp) */
+.box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ff4d6a;
+  border-radius: 0 0 10px 10px;
+}
+
+/* Ribbon (Dây ruy băng) */
+.ribbon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 150%;
+  background-color: #fff;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.ribbon::before,
+.ribbon::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 150%;
+  background-color: #fff;
+}
+
+.ribbon::before {
+  transform: rotate(90deg);
+}
+
+/* Gift Content */
+.gift-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+}
+
+.gift-content h1 {
+  font-size: 2rem;
+  color: #ff4d6a;
+}
+
+.gift-content p {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Hiệu ứng mở quà */
+.open .lid {
+  transform: rotateX(90deg);
+}
+
+.open .gift-content {
+  opacity: 1;
+  visibility: visible;
+}

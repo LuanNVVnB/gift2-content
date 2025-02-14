@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hộp Quà 3D Valentine</title>
+    <style>
+      /* Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f9d7e6; /* Màu hồng pastel */
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+      }
+
+      .gift-container {
+        position: relative;
+        width: 200px;
+        height: 250px;
+        perspective: 1000px;
+        cursor: pointer;
+      }
+
+      .box {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 1s ease-in-out;
+      }
+
+      .lid {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        background-color: #ff4081; /* Hồng đậm */
+        border-radius: 20px 20px 0 0;
+        transform-origin: bottom;
+        transition: transform 0.5s ease-in-out;
+      }
+
+      .box-body {
+        width: 100%;
+        height: 180px;
+        background-color: #ff80ab; /* Hồng nhạt */
+        border-radius: 0 0 15px 15px;
+        position: relative;
+      }
+
+      .ribbon-vertical {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 10px;
+        height: 100%;
+        background-color: #ff1744; /* Đỏ đậm */
+      }
+
+      .ribbon-horizontal {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 10px;
+        background-color: #ff1744; /* Đỏ đậm */
+        transform: translateY(-50%);
+      }
+
+      .bow {
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 40px;
+        background-color: #ff1744; /* Đỏ đậm */
+        border-radius: 50%;
+      }
+
+      .bow::before,
+      .bow::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 40px;
+        background-color: #ff1744; /* Đỏ đậm */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+        border-radius: 5px;
+      }
+
+      .bow::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+
+      .card {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 150%) scale(0);
+        width: 300px;
+        height: 200px;
+        background-color: #fff;
+        border: 2px solid #ff4081;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        padding: 20px;
+        font-size: 1.2rem;
+        color: #ff1744;
+        z-index: 10;
+        transition: transform 1s ease-in-out 0.5s;
+      }
+
+      .card h1 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+
+      .open .lid {
+        transform: rotateX(90deg);
+      }
+
+      .open .card {
+        transform: translate(-50%, -50%) scale(1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="gift-container" id="giftContainer">
+      <div class="box">
+        <div class="lid"></div>
+        <div class="box-body">
+          <div class="ribbon-vertical"></div>
+          <div class="ribbon-horizontal"></div>
+        </div>
+        <div class="bow"></div>
+      </div>
+      <div class="card" id="card">
+        <h1>Chúc Mừng Valentine 14-2!</h1>
+        <p>
+          Chúc tình yêu của anh một ngày valentine tràn ngập yêu thương, hạnh
+          phúc và mãi là embee của anh nhé!
+        </p>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const giftContainer = document.getElementById("giftContainer");
+
+        giftContainer.addEventListener("click", () => {
+          // Thêm class để mở hộp quà
+          giftContainer.classList.add("open");
+
+          // Chuyển hướng sau 5 giây
+          setTimeout(() => {
+            window.location.href = "https://luannvvnb.github.io/gift2-content/"; // Thay bằng URL bạn muốn chuyển hướng
+          }, 3000);
+        });
+      });
+    </script>
+  </body>
+</html>
